@@ -1,0 +1,18 @@
+load hansel_and_gretel.txt 2 ignore_punctuation
+
+load alice_in_wonderland.txt 2 ignore_punctuation
+
+print "could"
+
+load spot.txt 2 ignore_punctuation
+
+print "run"
+
+generate "could" 4 most_common
+
+generate "could" 10 random
+
+quit
+
+Janelle Fayette 
+

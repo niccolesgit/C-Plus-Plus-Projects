@@ -1,0 +1,104 @@
+Number of solutions: 17
+
+Solution 1:
+@LX
+LL@
+LLX
+XXX
+
+Solution 2:
+@LX
+LLX
+LL@
+XXX
+
+Solution 3:
+@LX
+LLX
+LLX
+X@X
+
+Solution 4:
+@LX
+LLX
+LLX
+XX@
+
+Solution 5:
+L@X
+LLX
+LL@
+XXX
+
+Solution 6:
+L@X
+LLX
+LLX
+@XX
+
+Solution 7:
+L@X
+LLX
+LLX
+XX@
+
+Solution 8:
+LL@
+@LX
+LLX
+XXX
+
+Solution 9:
+LLX
+@LX
+LL@
+XXX
+
+Solution 10:
+LLX
+@LX
+LLX
+X@X
+
+Solution 11:
+LLX
+@LX
+LLX
+XX@
+
+Solution 12:
+LLX
+L@X
+LLX
+@XX
+
+Solution 13:
+LLX
+L@X
+LLX
+XX@
+
+Solution 14:
+LL@
+LLX
+@LX
+XXX
+
+Solution 15:
+LLX
+LL@
+@LX
+XXX
+
+Solution 16:
+LLX
+LLX
+@LX
+XX@
+
+Solution 17:
+LL@
+LLX
+L@X
+XXX
+
