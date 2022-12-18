@@ -1,0 +1,13 @@
+clang++ -g -Wall -Wextra generate_input.cpp -o generate.out
+
+./generate.out string 10000 5 5 > medium_string_input1.txt
+./generate.out integer 10000 3 5 > medium_integer_input1.txt
+
+./generate.out string 20000 5 5 > medium_string_input2.txt
+./generate.out integer 20000 3 5 > medium_integer_input2.txt
+
+./generate.out string 50000 5 5 > medium_string_input3.txt
+./generate.out integer 50000 3 5 > medium_integer_input3.txt
+
+./generate.out string 100000 5 5 > medium_string_input4.txt
+./generate.out integer 100000 3 5 > medium_integer_input4.txt

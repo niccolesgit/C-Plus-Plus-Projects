@@ -1,0 +1,408 @@
+HOMEWORK 10:  PERFORMANCE & BIG O NOTATION
+
+
+NAME:  Valeria Villanueva-Ruiz
+
+
+COLLABORATORS AND OTHER RESOURCES:
+List the names of everyone you talked to about this assignment
+(classmates, TAs, ALAC tutors, upperclassmen, students/instructor via
+LMS, etc.), and all of the resources (books, online reference
+material, etc.) you consulted in completing this assignment.
+
+    - Devak Patel (UPE tutor)
+
+    (the next two links are the documentation of what I used in a python
+    program I wrote to run the different and multiple tests for each data
+    structure with)
+    - https://docs.python.org/3/library/subprocess.html
+    - https://pypi.org/project/tabulate/
+
+Remember: Your implementation for this assignment must be done on your
+own, as described in "Academic Integrity for Homework" handout.
+
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT: 15hrs (most of the time I spent
+							analyzing and waiting for
+							my program to run multiple
+							times for different cases)
+
+
+COMPLEXITY ANALYSIS
+n = number of elements in the input
+f = requested number of values in output (first sorted only)
+l = maximum length of any string element
+
+Neatly fill in the table below with the Big O Notation for running time.
+
+---------------------------------------------------------------------------------------
+|          |          | remove   |          | closest  | first f  | longest           |
+|          | sort     | dups     | mode     | pair     | sorted   | substr            | 
+---------------------------------------------------------------------------------------
+|          |          |          |          |          |          |                   |
+| vector   |O(nlog(n))|  O(n^2)  |O(nlog(n))|O(nlog(n))|O(nlog(n))|O(n^2(l^3))        |
+---------------------------------------------------------------------------------------
+|          |          |          |          |          |          |                   |
+| list     |O(nlog(n))|  O(n^2)  |O(nlog(n))|O(nlog(n))|O(nlog(n))|O(n^2(l^3))        |
+---------------------------------------------------------------------------------------
+|          |          |          |          |          |          |                   |
+| bst      |O(nlog(n))|O(nlog(n))|O(nlog(n))|O(nlog(n))|O(nlog(n))|O(nl^2(log(nl^2))) |
+---------------------------------------------------------------------------------------
+|          |          |          |          |          |          |                   |
+| pq       |O(nlog(n))|    X     |O(nlog(n))|O(nlog(n))|O(nlog(n))|O(nl^2(nl^2))      |
+---------------------------------------------------------------------------------------
+|          |          |          |          |          |          |                   |
+| hash     |    X     |   O(n)   |   O(n)   |  O(n^2)  |    X     | O(nl^3)           |
+---------------------------------------------------------------------------------------
+Hash sort and first f sorted could be feasible but they're not sensible.
+The same is for pq's remove duplicates.
+
+
+RESULTS
+For each data type and each operation, run several sufficiently large
+tests and collect the operation time output by the program. Organize
+these timing measurements in your README.txt file and estimate the
+coefficients for the dominant term of your Big ‘O’ Notation.
+
+These are the stats of the input files I used and ran through my program:
+
+Name:                        Size:      Number of Characters/Digits:
+---------------------------------------------------------------------
+medium_string_input1.txt     10000	min = 5, max = 10
+medium_string_input2.txt     10000      min = 10, max = 20
+medium_string_input3.txt     10000      min = 15, max = 25
+large_string_input1.txt      50000      min = 5, max = 10
+large_string_input2.txt      50000      min = 10, max = 15
+large_string_input3.txt      50000      min = 15, max = 20
+
+medium_int_input1.txt        10000	min = 1, max = 3
+medium_int_input2.txt        10000      min = 4, max = 6
+medium_int_input3.txt        10000      min = 7, max = 9
+large_int_input1.txt         50000	min = 1, max = 3
+large_int_input2.txt         50000      min = 4, max = 6
+large_int_input3.txt         50000      min = 7, max = 9
+
+This is all of the output I collected:
+(It's organized by the input file used for each run.)
+
+
+Input file (randomly		Function:		Data		Operation	Input/Output	Memory
+generated):						Structure:	Time(secs):	Ratio:		Usage:
+---------------------------------------------------------------------------------------------------------------
+medium_string_input1.txt	sort			vector		0.015625	10000:10000	0 kB
+medium_string_input1.txt	sort			bst		0.078125	10000:10000	0 kB
+medium_string_input1.txt	sort			pq		0.078125	10000:10000	0 kB
+medium_string_input1.txt	sort			list		0.015625	10000:10000	0 kB
+medium_string_input1.txt	remove_duplicates	vector		0.859375	10000:10000	0 kB
+medium_string_input1.txt	remove_duplicates	bst		0.09375		0:10000		0 kB
+medium_string_input1.txt	remove_duplicates	ht		0.078125	0:10000		0 kB
+medium_string_input1.txt	remove_duplicates	list		1.73438		10000:10000	0 kB
+medium_string_input1.txt	mode			vector		0.015625	10000:1		0 kB
+medium_string_input1.txt	mode			bst		0.015625	10000:1		0 kB
+medium_string_input1.txt	mode			ht		0.015625	10000:1		0 kB
+medium_string_input1.txt	mode			pq		0.015625	10000:1		0 kB
+medium_string_input1.txt	mode			list		0.03125		10000:1		0 kB
+medium_string_input1.txt	first_sorted		vector		0.0		10000:3		0 kB
+medium_string_input1.txt	first_sorted		bst		0.03125		10000:3		0 kB
+medium_string_input1.txt	first_sorted		pq		0.015625	10000:3		0 kB
+medium_string_input1.txt	first_sorted		list		0.015625	10000:3		0 kB
+medium_string_input1.txt	longest_substring	vector		13.875		10000:1		0 kB
+medium_string_input1.txt	longest_substring	bst		0.359375	0:1		0 kB
+medium_string_input1.txt	longest_substring	ht		0.15625		10000:1		0 kB
+medium_string_input1.txt	longest_substring	pq		0.15625		0:1		0 kB
+medium_string_input1.txt	longest_substring	list		39.1094		10000:1		0 kB
+medium_string_input2.txt	sort			vector		0.015625	10000:10000	0 kB
+medium_string_input2.txt	sort			bst		0.046875	10000:10000	0 kB
+medium_string_input2.txt	sort			pq		0.0625		10000:10000	0 kB
+medium_string_input2.txt	sort			list		0.015625	10000:10000	0 kB
+medium_string_input2.txt	remove_duplicates	vector		0.578125	10000:10000	0 kB
+medium_string_input2.txt	remove_duplicates	bst		0.078125	0:10000		0 kB
+medium_string_input2.txt	remove_duplicates	ht		0.0625		0:10000		0 kB
+medium_string_input2.txt	remove_duplicates	list		1.14062		10000:10000	0 kB
+medium_string_input2.txt	mode			vector		0.015625	10000:1		0 kB
+medium_string_input2.txt	mode			bst		0.015625	10000:1		0 kB
+medium_string_input2.txt	mode			ht		0.015625	10000:1		0 kB
+medium_string_input2.txt	mode			pq		0.015625	10000:1		0 kB
+medium_string_input2.txt	mode			list		0.0		10000:1		0 kB
+medium_string_input2.txt	first_sorted		vector		0.015625	10000:3		0 kB
+medium_string_input2.txt	first_sorted		bst		0.0		10000:3		0 kB
+medium_string_input2.txt	first_sorted		pq		0.0		10000:3		0 kB
+medium_string_input2.txt	first_sorted		list		0.015625	10000:3		0 kB
+medium_string_input2.txt	longest_substring	vector		119.812		10000:1		0 kB
+medium_string_input2.txt	longest_substring	bst		2.15625		0:1		0 kB
+medium_string_input2.txt	longest_substring	ht		1.20312		10000:1		0 kB
+medium_string_input2.txt	longest_substring	pq		1.67188		0:1		0 kB
+medium_string_input2.txt	longest_substring	list		326.188		10000:1		0 kB
+medium_string_input3.txt	sort			vector		0.0		10000:10000	0 kB
+medium_string_input3.txt	sort			bst		0.0625		10000:10000	0 kB
+medium_string_input3.txt	sort			pq		0.046875	10000:10000	0 kB
+medium_string_input3.txt	sort			list		0.015625	10000:10000	0 kB
+medium_string_input3.txt	remove_duplicates	vector		0.578125	10000:10000	0 kB
+medium_string_input3.txt	remove_duplicates	bst		0.0625		0:10000		0 kB
+medium_string_input3.txt	remove_duplicates	ht		0.0625		0:10000		0 kB
+medium_string_input3.txt	remove_duplicates	list		1.14062		10000:10000	0 kB
+medium_string_input3.txt	mode			vector		0.015625	10000:1		0 kB
+medium_string_input3.txt	mode			bst		0.03125		10000:1		0 kB
+medium_string_input3.txt	mode			ht		0.015625	10000:1		0 kB
+medium_string_input3.txt	mode			pq		0.015625	10000:1		0 kB
+medium_string_input3.txt	mode			list		0.0		10000:1		0 kB
+medium_string_input3.txt	first_sorted		vector		0.0		10000:3		0 kB
+medium_string_input3.txt	first_sorted		bst		0.015625	10000:3		0 kB
+medium_string_input3.txt	first_sorted		pq		0.015625	10000:3		0 kB
+medium_string_input3.txt	first_sorted		list		0.015625	10000:3		0 kB
+medium_string_input3.txt	longest_substring	vector		260.594		10000:1		0 kB
+medium_string_input3.txt	longest_substring	bst		3.375		0:1		0 kB
+medium_string_input3.txt	longest_substring	ht		1.98438		10000:1		0 kB
+medium_string_input3.txt	longest_substring	pq		3.23438		0:1		0 kB
+medium_string_input3.txt	longest_substring	list		724.797		10000:1		0 kB
+medium_int_input1.txt		sort			vector		0.0		10000:10000	0 kB
+medium_int_input1.txt		sort			bst		0.046875	10000:10000	0 kB
+medium_int_input1.txt		sort			pq		0.046875	10000:10000	0 kB
+medium_int_input1.txt		sort			list		0.0		10000:10000	0 kB
+medium_int_input1.txt		remove_duplicates	vector		0.046875	10000:1000	0 kB
+medium_int_input1.txt		remove_duplicates	bst		0.015625	0:1000		0 kB
+medium_int_input1.txt		remove_duplicates	ht		0.015625	0:1000		0 kB
+medium_int_input1.txt		remove_duplicates	list		0.1875		10000:1000	0 kB
+medium_int_input1.txt		mode			vector		0.0		10000:1		0 kB
+medium_int_input1.txt		mode			bst		0.0		10000:1		0 kB
+medium_int_input1.txt		mode			ht		0.0		10000:1		0 kB
+medium_int_input1.txt		mode			pq		0.015625	10000:1		0 kB
+medium_int_input1.txt		mode			list		0.015625	10000:1		0 kB
+medium_int_input1.txt		closest_pair		vector		0.015625	10000:2		0 kB
+medium_int_input1.txt		closest_pair		bst		0.0		42:2		0 kB
+medium_int_input1.txt		closest_pair		ht		0.0		42:2		0 kB
+medium_int_input1.txt		closest_pair		pq		0.015625	10000:2		0 kB
+medium_int_input1.txt		closest_pair		list		0.015625	10000:2		0 kB
+medium_int_input1.txt		first_sorted		vector		0.0		10000:3		0 kB
+medium_int_input1.txt		first_sorted		bst		0.015625	10000:3		0 kB
+medium_int_input1.txt		first_sorted		pq		0.0		10000:3		0 kB
+medium_int_input1.txt		first_sorted		list		0.015625	10000:3		0 kB
+medium_int_input2.txt		sort			vector		0.0		10000:10000	0 kB
+medium_int_input2.txt		sort			bst		0.078125	10000:10000	0 kB
+medium_int_input2.txt		sort			pq		0.0625		10000:10000	0 kB
+medium_int_input2.txt		sort			list		0.015625	10000:10000	0 kB
+medium_int_input2.txt		remove_duplicates	vector		0.21875		10000:9947	0 kB
+medium_int_input2.txt		remove_duplicates	bst		0.0625		0:9947		0 kB
+medium_int_input2.txt		remove_duplicates	ht		0.0625		0:9947		0 kB
+medium_int_input2.txt		remove_duplicates	list		1.01562		10000:9947	0 kB
+medium_int_input2.txt		mode			vector		0.0		10000:1		0 kB
+medium_int_input2.txt		mode			bst		0.015625	10000:1		0 kB
+medium_int_input2.txt		mode			ht		0.0		10000:1		0 kB
+medium_int_input2.txt		mode			pq		0.015625	10000:1		0 kB
+medium_int_input2.txt		mode			list		0.015625	10000:1		0 kB
+medium_int_input2.txt		closest_pair		vector		0.0		10000:2		0 kB
+medium_int_input2.txt		closest_pair		bst		0.0		873:2		0 kB
+medium_int_input2.txt		closest_pair		ht		0.0		873:2		0 kB
+medium_int_input2.txt		closest_pair		pq		0.015625	10000:2		0 kB
+medium_int_input2.txt		closest_pair		list		0.015625	10000:2		0 kB
+medium_int_input2.txt		first_sorted		vector		0.0		10000:3		0 kB
+medium_int_input2.txt		first_sorted		bst		0.015625	10000:3		0 kB
+medium_int_input2.txt		first_sorted		pq		0.0		10000:3		0 kB
+medium_int_input2.txt		first_sorted		list		0.0		10000:3		0 kB
+medium_int_input3.txt		sort			vector		0.0		10000:10000	0 kB
+medium_int_input3.txt		sort			bst		0.0625		10000:10000	0 kB
+medium_int_input3.txt		sort			pq		0.0625		10000:10000	0 kB
+medium_int_input3.txt		sort			list		0.015625	10000:10000	0 kB
+medium_int_input3.txt		remove_duplicates	vector		0.234375	10000:10000	0 kB
+medium_int_input3.txt		remove_duplicates	bst		0.0625		0:10000		0 kB
+medium_int_input3.txt		remove_duplicates	ht		0.09375		0:10000		0 kB
+medium_int_input3.txt		remove_duplicates	list		1.0		10000:10000	0 kB
+medium_int_input3.txt		mode			vector		0.0		10000:1		0 kB
+medium_int_input3.txt		mode			bst		0.015625	10000:1		0 kB
+medium_int_input3.txt		mode			ht		0.015625	10000:1		0 kB
+medium_int_input3.txt		mode			pq		0.015625	10000:1		0 kB
+medium_int_input3.txt		mode			list		0.0		10000:1		0 kB
+medium_int_input3.txt		closest_pair		vector		0.0		10000:2		0 kB
+medium_int_input3.txt		closest_pair		bst		0.015625	10000:2		0 kB
+medium_int_input3.txt		closest_pair		ht		3.84375		10000:2		0 kB
+medium_int_input3.txt		closest_pair		pq		0.0		10000:2		0 kB
+medium_int_input3.txt		closest_pair		list		0.015625	10000:2		0 kB
+medium_int_input3.txt		first_sorted		vector		0.0		10000:3		0 kB
+medium_int_input3.txt		first_sorted		bst		0.015625	10000:3		0 kB
+medium_int_input3.txt		first_sorted		pq		0.0		10000:3		0 kB
+medium_int_input3.txt		first_sorted		list		0.015625	10000:3		0 kB
+large_string_input1.txt		sort			vector		0.0625		50000:50000	0 kB
+large_string_input1.txt		sort			bst		0.3125		50000:50000	0 kB
+large_string_input1.txt		sort			pq		0.359375	50000:50000	0 kB
+large_string_input1.txt		sort			list		0.15625		50000:50000	0 kB
+large_string_input1.txt		remove_duplicates	vector		17.25		50000:49996	0 kB
+large_string_input1.txt		remove_duplicates	bst		0.34375		0:49996		0 kB
+large_string_input1.txt		remove_duplicates	ht		0.296875	0:49996		0 kB
+large_string_input1.txt		remove_duplicates	list		36.0938		50000:49996	0 kB
+large_string_input1.txt		mode			vector		0.046875	50000:1		0 kB
+large_string_input1.txt		mode			bst		0.09375		50000:1		0 kB
+large_string_input1.txt		mode			ht		0.046875	50000:1		0 kB
+large_string_input1.txt		mode			pq		0.09375		50000:1		0 kB
+large_string_input1.txt		mode			list		0.078125	50000:1		0 kB
+large_string_input1.txt		first_sorted		vector		0.046875	50000:3		0 kB
+large_string_input1.txt		first_sorted		bst		0.078125	50000:3		0 kB
+large_string_input1.txt		first_sorted		pq		0.03125		50000:3		0 kB
+large_string_input1.txt		first_sorted		list		0.078125	50000:3		0 kB
+large_string_input1.txt		longest_substring	vector		220.453		50000:1		0 kB
+large_string_input1.txt		longest_substring	bst		2.17188		0:1		0 kB
+large_string_input1.txt		longest_substring	ht		1.17188		50000:1		0 kB
+large_string_input1.txt		longest_substring	pq		0.859375	0:1		0 kB
+large_string_input1.txt		longest_substring	list		779.812		50000:1		0 kB
+large_string_input2.txt		sort			vector		0.0625		50000:50000	0 kB
+large_string_input2.txt		sort			bst		0.40625		50000:50000	0 kB
+large_string_input2.txt		sort			pq		0.390625	50000:50000	0 kB
+large_string_input2.txt		sort			list		0.109375	50000:50000	0 kB
+large_string_input2.txt		remove_duplicates	vector		16.0938		50000:50000	0 kB
+large_string_input2.txt		remove_duplicates	bst		0.453125	0:50000		0 kB
+large_string_input2.txt		remove_duplicates	ht		0.375		0:50000		0 kB
+large_string_input2.txt		remove_duplicates	list		32.6875		50000:50000	0 kB
+large_string_input2.txt		mode			vector		0.078125	50000:1		0 kB
+large_string_input2.txt		mode			bst		0.09375		50000:1		0 kB
+large_string_input2.txt		mode			ht		0.0625		50000:1		0 kB
+large_string_input2.txt		mode			pq		0.125		50000:1		0 kB
+large_string_input2.txt		mode			list		0.09375		50000:1		0 kB
+large_string_input2.txt		first_sorted		vector		0.0625		50000:3		0 kB
+large_string_input2.txt		first_sorted		bst		0.09375		50000:3		0 kB
+large_string_input2.txt		first_sorted		pq		0.03125		50000:3		0 kB
+large_string_input2.txt		first_sorted		list		0.09375		50000:3		0 kB
+large_string_input2.txt		longest_substring	vector		2147.81		50000:1		0 kB
+large_string_input2.txt		longest_substring	bst		8.89062		0:1		0 kB
+large_string_input2.txt		longest_substring	ht		4.57812		50000:1		0 kB
+large_string_input2.txt		longest_substring	pq		6.42188		0:1		0 kB
+large_string_input2.txt		longest_substring	list		5760.75		50000:1		0 kB
+large_string_input3.txt		sort			vector		0.0625		50000:50000	0 kB
+large_string_input3.txt		sort			bst		0.265625	50000:50000	0 kB
+large_string_input3.txt		sort			pq		0.265625	50000:50000	0 kB
+large_string_input3.txt		sort			list		0.078125	50000:50000	0 kB
+large_string_input3.txt		remove_duplicates	vector		12.2812		50000:50000	0 kB
+large_string_input3.txt		remove_duplicates	bst		0.296875	0:50000		0 kB
+large_string_input3.txt		remove_duplicates	ht		0.25		0:50000		0 kB
+large_string_input3.txt		remove_duplicates	list		25.8438		50000:50000	0 kB
+large_string_input3.txt		mode			vector		0.0625		50000:1		0 kB
+large_string_input3.txt		mode			bst		0.078125	50000:1		0 kB
+large_string_input3.txt		mode			ht		0.046875	50000:1		0 kB
+large_string_input3.txt		mode			pq		0.0625		50000:1		0 kB
+large_string_input3.txt		mode			list		0.078125	50000:1		0 kB
+large_string_input3.txt		first_sorted		vector		0.046875	50000:3		0 kB
+large_string_input3.txt		first_sorted		bst		0.078125	50000:3		0 kB
+large_string_input3.txt		first_sorted		pq		0.03125		50000:3		0 kB
+large_string_input3.txt		first_sorted		list		0.078125	50000:3		0 kB
+large_string_input3.txt		longest_substring	vector		4890.12		50000:1		0 kB
+large_string_input3.txt		longest_substring	bst		16.5156		0:1		0 kB
+large_string_input3.txt		longest_substring	ht		8.60938		50000:1		0 kB
+large_string_input3.txt		longest_substring	pq		13.9375		0:1		0 kB
+large_string_input3.txt		longest_substring	list		12526.5		50000:1		0 kB
+large_int_input1.txt		sort			vector		0.03125		50000:50000	0 kB
+large_int_input1.txt		sort			bst		0.203125	50000:50000	0 kB
+large_int_input1.txt		sort			pq		0.21875		50000:50000	0 kB
+large_int_input1.txt		sort			list		0.046875	50000:50000	0 kB
+large_int_input1.txt		remove_duplicates	vector		0.171875	50000:1000	0 kB
+large_int_input1.txt		remove_duplicates	bst		0.03125		0:1000		0 kB
+large_int_input1.txt		remove_duplicates	ht		0.015625	0:1000		0 kB
+large_int_input1.txt		remove_duplicates	list		0.796875	50000:1000	0 kB
+large_int_input1.txt		mode			vector		0.015625	50000:1		0 kB
+large_int_input1.txt		mode			bst		0.03125		50000:1		0 kB
+large_int_input1.txt		mode			ht		0.0		50000:1		0 kB
+large_int_input1.txt		mode			pq		0.046875	50000:1		0 kB
+large_int_input1.txt		mode			list		0.03125		50000:1		0 kB
+large_int_input1.txt		closest_pair		vector		0.015625	50000:2		0 kB
+large_int_input1.txt		closest_pair		bst		0.0		42:2		0 kB
+large_int_input1.txt		closest_pair		ht		0.0		42:2		0 kB
+large_int_input1.txt		closest_pair		pq		0.03125		50000:2		0 kB
+large_int_input1.txt		closest_pair		list		0.046875	50000:2		0 kB
+large_int_input1.txt		first_sorted		vector		0.015625	50000:3		0 kB
+large_int_input1.txt		first_sorted		bst		0.015625	50000:3		0 kB
+large_int_input1.txt		first_sorted		pq		0.015625	50000:3		0 kB
+large_int_input1.txt		first_sorted		list		0.03125		50000:3		0 kB
+large_int_input2.txt		sort			vector		0.03125		50000:50000	0 kB
+large_int_input2.txt		sort			bst		0.234375	50000:50000	0 kB
+large_int_input2.txt		sort			pq		0.234375	50000:50000	0 kB
+large_int_input2.txt		sort			list		0.046875	50000:50000	0 kB
+large_int_input2.txt		remove_duplicates	vector		4.1875		50000:48769	0 kB
+large_int_input2.txt		remove_duplicates	bst		0.25		0:48769		0 kB
+large_int_input2.txt		remove_duplicates	ht		0.21875		0:48769		0 kB
+large_int_input2.txt		remove_duplicates	list		19.0		50000:48769	0 kB
+large_int_input2.txt		mode			vector		0.03125		50000:1		0 kB
+large_int_input2.txt		mode			bst		0.046875	50000:1		0 kB
+large_int_input2.txt		mode			ht		0.03125		50000:1		0 kB
+large_int_input2.txt		mode			pq		0.046875	50000:1		0 kB
+large_int_input2.txt		mode			list		0.046875	50000:1		0 kB
+large_int_input2.txt		closest_pair		vector		0.015625	50000:2		0 kB
+large_int_input2.txt		closest_pair		bst		0.0		873:2		0 kB
+large_int_input2.txt		closest_pair		ht		0.0		873:2		0 kB
+large_int_input2.txt		closest_pair		pq		0.046875	50000:2		0 kB
+large_int_input2.txt		closest_pair		list		0.046875	50000:2		0 kB
+large_int_input2.txt		first_sorted		vector		0.03125		50000:3		0 kB
+large_int_input2.txt		first_sorted		bst		0.046875	50000:3		0 kB
+large_int_input2.txt		first_sorted		pq		0.015625	50000:3		0 kB
+large_int_input2.txt		first_sorted		list		0.046875	50000:3		0 kB
+large_int_input3.txt		sort			vector		0.03125		50000:50000	0 kB
+large_int_input3.txt		sort			bst		0.21875		50000:50000	0 kB
+large_int_input3.txt		sort			pq		0.265625	50000:50000	0 kB
+large_int_input3.txt		sort			list		0.078125	50000:50000	0 kB
+large_int_input3.txt		remove_duplicates	vector		4.375		50000:49998	0 kB
+large_int_input3.txt		remove_duplicates	bst		0.265625	0:49998		0 kB
+large_int_input3.txt		remove_duplicates	ht		0.21875		0:49998		0 kB
+large_int_input3.txt		remove_duplicates	list		18.8281		50000:49998	0 kB
+large_int_input3.txt		mode			vector		0.03125		50000:1		0 kB
+large_int_input3.txt		mode			bst		0.0625		50000:1		0 kB
+large_int_input3.txt		mode			ht		0.03125		50000:1		0 kB
+large_int_input3.txt		mode			pq		0.046875	50000:1		0 kB
+large_int_input3.txt		mode			list		0.046875	50000:1		0 kB
+large_int_input3.txt		closest_pair		vector		0.03125		50000:2		0 kB
+large_int_input3.txt		closest_pair		bst		0.03125		36407:2		0 kB
+large_int_input3.txt		closest_pair		ht		0.03125		36407:2		0 kB
+large_int_input3.txt		closest_pair		pq		0.046875	50000:2		0 kB
+large_int_input3.txt		closest_pair		list		0.046875	50000:2		0 kB
+large_int_input3.txt		first_sorted		vector		0.03125		50000:3		0 kB
+large_int_input3.txt		first_sorted		bst		0.046875	50000:3		0 kB
+large_int_input3.txt		first_sorted		pq		0.03125		50000:3		0 kB
+large_int_input3.txt		first_sorted		list		0.046875	50000:3		0 kB
+
+
+DISCUSSION
+Do these measurements and the overall performance match your predicted
+Big ‘O‘ Notation for the data type and operation? Did you update your
+initial answers for the Big ‘O‘ Notation of any cell in the table?
+
+Compare the relative coefficients for different data types that have
+the same Big ‘O’ Notation for a specific operation. Do these match
+your intuition? Are you surprised by any of the results? Will these
+results impact your data structure choices for future programming
+projects?
+
+Use well-written, complete sentences.  Approximately 250-500 words.  
+
+
+Yes, I believe the measurements I collected matched my predictions.
+I did have to change some of the answers I initially had on my
+table, but mostly it was due to errors in my simplifications. At
+the beginning there were also some operations that I thought were
+possible but actually were not (sort and first sorted for my hash
+table and remove duplicates for my priority queues). I did not
+actually calculate the k values but looking at my order O notation
+values in my table and comparing that to the times I collected from
+the actual performance of my functions to completely process the
+different input files, I did come to some conclusions and was very
+intrigued by some of these. For example, one of the observations I
+made, which surprised me quite a lot, was seeing that the longest
+substring function for vector and list with 50000 elements took hours
+to completely run. For list, for example, it took 3 hours and some more
+minutes to run through it which I was expecting, but was still surprised
+that it took that long (none of my programs had ever taken that long!).
+I even got a little worried it would crash. It did make sense though
+since for example inputting 10000 elements with a size of 10 characters
+a vector's O notation can be calculated to be 100000000000 while other
+structures which took just minutes to run like a tree's O notation
+can be calculated to be 6000000 for the same amount of elements with
+the same amount of characters. Seeing all of these timings revealed
+to me the efficiency of the different data structures which I had not
+actually had the chance to see before. Now I know some structures, such
+as hash tables, as much more efficient and less time consuming when
+using huge amounts of input than other structures, like vectors and lists.
+So I feel like I can choose better which structures to use in my future
+programs and hopefully in practice in my future workplace.
+
+
+MISC. COMMENTS TO GRADER:  
+Optional, please be concise!
+I didn't calculate the k values because I was very confused as to how
+to do that so I based my analysis on the time it took for each of the
+functions to run through all my input files 6 for string and 6 for int,
+which ultimately gave me a better range of output to analyze.
